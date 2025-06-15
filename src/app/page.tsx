@@ -1,8 +1,9 @@
 import { BlogThumbCard } from "../components/BlogThumbCard";
-import { getSampleData } from "../data/sampleData";
+import { getQiitaBlogData } from "../data/qiitaData";
 
-export default function Page() {
-  const data = getSampleData();
+export default async function Page() {
+  const qiitaData = await getQiitaBlogData();
+  const data = [...qiitaData];
 
   return (
     <div className="min-h-screen">
