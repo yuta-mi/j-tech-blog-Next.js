@@ -1,4 +1,4 @@
-import { Header } from "./components/Header";
+import { Header } from "../components/Header";
 import "./globals.css";
 
 export default function RootLayout({
@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-black text-white min-h-screen">
         <Header />
         {children}
       </body>
