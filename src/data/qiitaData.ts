@@ -19,10 +19,10 @@ interface BlogCardData {
   thumbnail: string
 }
 
-export async function fetchQiitaArticles(): Promise<QiitaItem[]> {
+export async function fetchQiitaArticles(page: number = 1, per_page: number = 100): Promise<QiitaItem[]> {
   try {
     const qiitaToken = process.env.QIITA_ACCESS_TOKEN
-    const query = new URLSearchParams(getQiitaOptions({}));
+    const query = new URLSearchParams(getQiitaOptions({page, per_page}));
     const url = 'https://qiita.com/api/v2/items?' + query;
 
     console.log(url);
@@ -38,7 +38,7 @@ export async function fetchQiitaArticles(): Promise<QiitaItem[]> {
     })
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      throw new Error(`HTTP error status: ${response.status}`)
     }
 
     const data = await response.json()
@@ -59,6 +59,13 @@ export function convertQiitaToBlogCard(qiitaItems: QiitaItem[]): BlogCardData[] 
 }
 
 export async function getQiitaBlogData(): Promise<BlogCardData[]> {
+  // 全データを取得するため、per_pageを100に設定（Qiita APIの最大値）
   const qiitaItems = await fetchQiitaArticles()
+  return convertQiitaToBlogCard(qiitaItems)
+}
+
+export async function getQiitaBlogDataForMain(): Promise<BlogCardData[]> {
+  // メインページ用：9件のみ取得
+  const qiitaItems = await fetchQiitaArticles(1, 9)
   return convertQiitaToBlogCard(qiitaItems)
 } 

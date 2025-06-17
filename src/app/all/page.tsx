@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { BlogThumbCard } from "@/components/BlogThumbCard";
-import { getQiitaBlogDataForMain } from "@/data/qiitaData";
+import { getQiitaBlogData } from "@/data/qiitaData";
 
 export default async function Page() {
-  // メインページでは9件のみ表示
-  const qiitaData = await getQiitaBlogDataForMain();
+  // すべての記事を取得（デフォルトの9件ではなく100件を取得）
+  const qiitaData = await getQiitaBlogData();
   const data = [...qiitaData];
 
   return (
@@ -22,7 +21,7 @@ export default async function Page() {
               Tech Blog
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 font-light">
-              最新の技術トレンドと実践的な開発ノウハウをお届け
+              すべての技術記事をまとめてご覧いただけます
             </p>
             <div className="flex justify-center space-x-1 mb-12">
               <div className="w-3 h-3 rounded-full bg-purple-400 animate-bounce"></div>
@@ -46,9 +45,12 @@ export default async function Page() {
           {/* セクションタイトル */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Latest Articles
+              すべての記事
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
+            <p className="text-gray-400 mt-4 text-lg">
+              これまでに投稿されたすべての技術記事を表示しています
+            </p>
           </div>
 
           {/* カードグリッド */}
@@ -67,18 +69,6 @@ export default async function Page() {
             ))}
           </div>
 
-          {/* 更なる記事への案内 */}
-          <div className="text-center mt-16">
-            <Link 
-              href="/all" 
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
-            >
-              <span>さらに記事を見る</span>
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
         </div>
       </main>
     </div>
