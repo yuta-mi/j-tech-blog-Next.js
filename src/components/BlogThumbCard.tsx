@@ -5,7 +5,9 @@ type BlogThumbCardProps = {
   thumbnail: string;
 };
 
-export const BlogThumbCard = ({ title, date, url, thumbnail }: BlogThumbCardProps) => {
+const defaultThumbnail = '/images/default-thumbnail.png';
+
+export const BlogThumbCard = ({ title, date, url = defaultThumbnail, thumbnail }: BlogThumbCardProps) => {
   return (
     <div className="group relative max-w-sm w-full">
       {/* カード本体 */}
