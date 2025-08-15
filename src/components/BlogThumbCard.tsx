@@ -9,7 +9,7 @@ const defaultThumbnail = '/images/default-thumbnail.png';
 
 export const BlogThumbCard = ({ title, date, url = defaultThumbnail, thumbnail }: BlogThumbCardProps) => {
   return (
-    <div className="group relative max-w-sm w-full">
+    <div className="group relative w-96">
       {/* カード本体 */}
       <div className="relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-purple-500/25 hover:shadow-2xl hover:border-purple-500/30 hover:scale-[1.02]">
         

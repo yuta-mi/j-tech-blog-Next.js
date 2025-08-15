@@ -1,5 +1,5 @@
 const qiitaQuery = {
-  user: "miu-Y",
+  user: "yuta-mi",
 };
 
 const qiitaQueryString = () => {

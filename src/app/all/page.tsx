@@ -1,5 +1,5 @@
 import { BlogThumbCard } from "@/components/BlogThumbCard";
-import { getQiitaBlogData } from "@/data/qiitaData";
+import { getQiitaBlogData } from "@/features/qiita/qiitaData";
 
 export default async function Page() {
   // すべての記事を取得（デフォルトの9件ではなく100件を取得）
@@ -17,7 +17,7 @@ export default async function Page() {
         
         <div className="relative container mx-auto px-6 py-24 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 pb-2 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent animate-pulse leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 pb-2 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent leading-tight">
               Tech Blog
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 font-light">

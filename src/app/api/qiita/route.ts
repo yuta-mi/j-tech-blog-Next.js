@@ -1,4 +1,4 @@
-import getQiitaOptions from "./qiitaOptions";
+import getQiitaOptions from "../../../features/qiita/qiitaOptions";
 
 export const dynamic = 'force-dynamic'
 
@@ -26,7 +26,6 @@ export async function GET() {
 const getQiitaBlogData = async () => {
   
   const qiitaToken = process.env.QIITA_ACCESS_TOKEN
-  const apiSecret = process.env.API_SECRET_KEY
   
   const query = new URLSearchParams(getQiitaOptions({}));
   const url = 'https://qiita.com/api/v2/items?' + query;

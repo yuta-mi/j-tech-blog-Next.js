@@ -73,6 +73,20 @@ export const getMicroCMSBlogData = async (): Promise<MicroCMSBlogData> => {
       });
 }
 
+export const getMicroCMSBlogDataLimited = async (limit: number): Promise<MicroCMSBlogData> => {
+  return await client
+      .get({
+        endpoint: 'blogs',
+        queries: {
+          fields: thumbnailFields(),
+          limit: limit,
+        }
+      })
+      .then((res) => {
+        return res;
+      });
+}
+
 // 個別ブログ記事を取得する関数を追加
 export const getMicroCMSBlogById = async (id: string): Promise<MicroCMSBlogDetail> => {
   return await client

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import appConfig from "@/config/appConfig";
+import { formatDate } from "@/utils/dateFormat";
 
 interface PageProps {
   params: Promise<{
@@ -55,7 +56,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   {blog.title}
                 </h1>
                 <p className="text-gray-300 text-lg">
-                  公開日: {new Date(blog.publishedAt).toLocaleDateString('ja-JP')}
+                  公開日: {formatDate(blog.publishedAt)}
                 </p>
               </div>
             </div>
@@ -76,7 +77,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             <div className="flex flex-col sm:flex-row justify-between items-center">
               <div className="mb-4 sm:mb-0">
                 <p className="text-gray-400">
-                  投稿日: {new Date(blog.publishedAt).toLocaleDateString('ja-JP')}
+                  投稿日: {formatDate(blog.publishedAt)}
                 </p>
                 <p className="text-gray-400">
                   カテゴリ: {blog.category?.name || 'その他'}

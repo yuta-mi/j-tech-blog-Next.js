@@ -1,6 +1,7 @@
 import { BlogThumbCard } from "@/components/BlogThumbCard";
 import appConfig from "@/config/appConfig";
 import { getMicroCMSBlogData } from "@/features/blogs/microCMBlogs";
+import { formatDate } from "@/utils/dateFormat";
 
 export default async function Page() {
   const microCMSBlogData = await getMicroCMSBlogData();
@@ -65,7 +66,7 @@ export default async function Page() {
                 }}
               >
                 <BlogThumbCard
-                  date={item.publishedAt}
+                  date={formatDate(item.publishedAt)}
                   url={`/blogs/${item.id}`}
                   thumbnail={item.eyecatch?.url || appConfig.api.microCMS.defaultThumbnail}
                   title={item.title}
