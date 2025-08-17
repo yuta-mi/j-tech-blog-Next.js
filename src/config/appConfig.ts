@@ -3,7 +3,7 @@ const appConfig = {
   api: {
     qiita: {
       baseUrl: 'https://qiita.com/api/v2',
-      defaultUser: 'miu-Y',
+      defaultUser: 'yuta-mi',
       itemsPerPage: 9,
       maxItemsPerPage: 100
     },
