@@ -26,8 +26,6 @@ export async function fetchQiitaArticles(page: number = 1, per_page: number = 10
     const query = new URLSearchParams(getQiitaOptions({page, per_page}));
     const url = 'https://qiita.com/api/v2/items?' + query;
 
-    console.log(url);
-
     const response = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
