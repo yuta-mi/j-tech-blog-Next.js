@@ -1,0 +1,38 @@
+# 本番用設定
+services:
+  j-tech-blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    # 本番では開発時のバインドマウントは使わない
+    volumes:
+      - type: volume
+        source: j-tech-blog-node_modules
+        target: /usr/src/app/node_modules
+    # 本番用コマンド
+    command:
+      - "sh"
+      - "-c"
+      - |
+        npm run build
+        npm prune --production
+        npm start
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    # ヘルスチェック
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  j-tech-blog-node_modules:
+    driver: local
+    name: j-tech-blog-node_modules
