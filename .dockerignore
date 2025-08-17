@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log
+.next
+.git
+.gitignore
+README.md
+# 本番用Dockerfileでは.envを除外
+# 開発時はdocker-composeのenv_fileで読み込み
+.env.prod
+coverage
+.nyc_output
+.vscode
+.idea
+*.swp
+*.swo
+*~
